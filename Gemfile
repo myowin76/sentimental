@@ -9,12 +9,12 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # gem 'coffee-rails', '~> 4.0.0'
 gem "haml-rails"
-gem 'simple_form'
+gem 'simple_form', '>= 3.1.0'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.2'
 
 gem 'jbuilder', '~> 2.0'
-
+gem 'devise'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 

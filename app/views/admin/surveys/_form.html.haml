@@ -1,0 +1,9 @@
+= simple_form_for(@admin_survey) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :url_token
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sentimental</title>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<% if user_signed_in? %>
+			<div id="account">
+				<ul>
+					<li>
+						<%= current_user.email  %>
+					</li>
+					<li>
+		        <%= link_to "My Account", edit_user_registration_path %>
+		      </li>
+					<li>
+						
+						<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+					</li>				
+				</ul>
+			</div>
+		<% end %>
+	</header>
+
+<%= yield %>
+
+</body>
+</html>

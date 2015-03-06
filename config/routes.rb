@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  
+ 
+
+  devise_for :users, class_name: "Admin::User"
+  get 'admin', :controller => 'admin', :action => 'dashboard'
+  
+  namespace :admin do
+
+    get 'dashboard', as: 'dashboard'
+    # get 'admin/dashboard'
+    
+    resources :countries
+    resources :surveys
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
