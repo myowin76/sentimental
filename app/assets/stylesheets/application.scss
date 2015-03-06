@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+.loading-spinner{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 31px;
+	height: 7px;
+	text-align: center;
+
+	i{
+		vertical-align: top;
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: #7D7D8E;
+		-webkit-animation: pulse 1s infinite ease-in-out;
+		-moz-animation: pulse 1s infinite ease-in-out;
+		animation: pulse 1s infinite ease-in-out;
+		-webkit-animation-fill-mode: both;
+		-moz-animation-fill-mode: both;
+		animation-fill-mode: both;
+		&.one{
+			float: left;
+			-webkit-animation-delay: -0.32s;
+			-moz-animation-delay: -0.32s;
+			animation-delay: -0.32s;
+		}
+		&.two{
+			-webkit-animation-delay: -0.16s;
+			-moz-animation-delay: -0.16s;
+			animation-delay: -0.16s;
+		}
+		&.three{
+			float: right;
+		}
+	}
+}
+
+.loading-spinner i{
+	
+}
