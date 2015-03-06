@@ -25,9 +25,12 @@ ActiveRecord::Schema.define(version: 20150306121647) do
   create_table "surveys", force: true do |t|
     t.string   "name"
     t.string   "url_token"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

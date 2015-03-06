@@ -21,7 +21,7 @@ class Admin::CountriesController < AdminController
   end
 
   def create
-    @admin_country = Admin::Country.new(country_params)
+    @admin_country = Admin::Country.new(admin_country_params)
     @admin_country.save
     respond_with(@admin_country)
   end
