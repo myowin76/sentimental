@@ -1,14 +1,11 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @admin_survey.name
-%p
-  %b Url token:
-  = @admin_survey.url_token
+%h1
+	= @admin_survey.name
+	%p= @admin_survey.url_token
 
 
-%h2 Survey Results details below
+%h4 Survey Results details below
 %p charts data
 %p information
 = link_to 'Edit', edit_admin_survey_path(@admin_survey)

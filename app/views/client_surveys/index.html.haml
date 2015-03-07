@@ -1,0 +1,27 @@
+%h1 Listing client_surveys
+
+%table
+  %thead
+    %tr
+      %th Text
+      %th Name
+      %th Email
+      %th Survey
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @client_surveys.each do |client_survey|
+      %tr
+        %td= client_survey.text
+        %td= client_survey.name
+        %td= client_survey.email
+        %td= client_survey.survey
+        %td= link_to 'Show', client_survey
+        %td= link_to 'Edit', edit_client_survey_path(client_survey)
+        %td= link_to 'Destroy', client_survey, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Client survey', new_client_survey_path
