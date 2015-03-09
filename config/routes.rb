@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   
 
+  # get 'main/index'
+
   devise_for :users, class_name: "Admin::User"
   get 'admin', :controller => 'admin', :action => 'dashboard'
   
@@ -16,11 +18,15 @@ Rails.application.routes.draw do
     resources :surveys
   end
 
+  resources :client_surveys
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'admin#dashboard'
+  # root 'admin#dashboard'
+    get 'feedback/:survey_id' => 'main#client_surveys'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

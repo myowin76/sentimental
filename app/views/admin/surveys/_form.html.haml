@@ -4,6 +4,8 @@
   .form-inputs
     = f.input :name
     = f.input :url_token
+    = link_to 'Generate', '#', class: 'btn btn-default generate'
+    = f.input :question
 
   .form-actions
     = f.button :submit

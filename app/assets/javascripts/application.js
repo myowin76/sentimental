@@ -13,6 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$('.btn.generate').on('click', function(){
+	alert('remote generate url');
+});
+
+$('.btn.feedback').on('click', function(){
+	alert('Save feedback and redirect to Thankyou page.');
+});	
+
+
 /*!
  * Bootstrap v3.3.2 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

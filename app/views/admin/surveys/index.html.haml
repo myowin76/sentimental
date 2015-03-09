@@ -5,6 +5,7 @@
     %tr
       %th Name
       %th Url token
+      %th Question
       %th
       %th
       %th
@@ -14,6 +15,7 @@
       %tr
         %td= admin_survey.name
         %td= admin_survey.url_token
+        %td= admin_survey.question
         %td= link_to 'Show', admin_survey
         %td= link_to 'Edit', edit_admin_survey_path(admin_survey)
         %td= link_to 'Destroy', admin_survey, :method => :delete, :data => { :confirm => 'Are you sure?' }

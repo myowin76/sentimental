@@ -48,6 +48,6 @@ class Admin::SurveysController < AdminController
     # end
 
     def admin_survey_params
-      params.require(:admin_survey).permit(:name, :url_token)
+      params.require(:admin_survey).permit(:name, :url_token, :question)
     end
 end
