@@ -13,6 +13,9 @@ class ClientSurveysController < ApplicationController
   end
 
   def new
+    
+    @survey = Admin::Survey.find_by url_token: params[:survey_url]
+    # byebug
     @client_survey = ClientSurvey.new
     respond_with(@client_survey)
   end
@@ -21,6 +24,7 @@ class ClientSurveysController < ApplicationController
   end
 
   def create
+    byebug
     @client_survey = ClientSurvey.new(client_survey_params)
     @client_survey.save
     respond_with(@client_survey)

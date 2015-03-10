@@ -19,7 +19,23 @@ $('.btn.generate').on('click', function(){
 });
 
 $('.btn.feedback').on('click', function(){
-	alert('Save feedback and redirect to Thankyou page.');
+	// alert('Save feedback and redirect to Thankyou page.');
+	// $.get( window.location.pathname.split('/').pop(), function( data ) {
+	//   $( "body" ).html( data );
+	//   alert( "Load was performed." );
+	// });
+	// var info = {}
+	// info['text'] = $('textarea.feedback').val();
+	// // info['survey_id'] = window.location.pathname.split('/').pop();
+	// $.ajax({
+ //    url: '/feedback/client_surveys',
+ //    type: "POST",
+ //    dataType: 'script',
+ //    data: info,
+ //    success: function(data){
+
+ //    }
+ //  });
 });	
 
 

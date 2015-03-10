@@ -1,11 +1,12 @@
+%br
+
+%h2= @survey.question
 = simple_form_for(@client_survey) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :text
-    = f.input :name
-    = f.input :email
-    =# f.association :survey
-
-  .form-actions
-    = f.button :submit
+  = f.input :survey_id, :as => :hidden, :input_html => { :value => @survey.id }
+  = f.input :text
+  = f.input :name
+  = f.input :email
+    
+  = f.button :submit

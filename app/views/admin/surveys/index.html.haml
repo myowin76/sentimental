@@ -14,7 +14,7 @@
     - @admin_surveys.each do |admin_survey|
       %tr
         %td= admin_survey.name
-        %td= admin_survey.url_token
+        %td= link_to admin_survey.url_token, "/feedback/#{admin_survey.url_token}",  :target => "_blank"
         %td= admin_survey.question
         %td= link_to 'Show', admin_survey
         %td= link_to 'Edit', edit_admin_survey_path(admin_survey)
@@ -22,4 +22,4 @@
 
 %br
 
-= link_to 'New Survey', new_admin_survey_path, :class => 'btn'
+= link_to 'New Survey', new_admin_survey_path, :class => 'btn btn-default'

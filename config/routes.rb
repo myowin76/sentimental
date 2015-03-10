@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   
 
-  # get 'main/index'
+  get 'main/saveSurvey'
 
   devise_for :users, class_name: "Admin::User"
   get 'admin', :controller => 'admin', :action => 'dashboard'
@@ -25,8 +25,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'admin#dashboard'
-    get 'feedback/:survey_id' => 'main#client_surveys'
-  root 'main#index'
+    # post 'feedback/:survey_id' => 'main#client_surveys'
+    # get 'feedback/:survey_id' => 'main#client_surveys', as: 'main_client_survey'
+    get 'feedback/:survey_url' => 'client_surveys#new'
+
+    root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
