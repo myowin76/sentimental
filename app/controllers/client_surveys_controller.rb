@@ -24,7 +24,7 @@ class ClientSurveysController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     @client_survey = ClientSurvey.new(client_survey_params)
     @client_survey.save
     respond_with(@client_survey)
@@ -46,6 +46,6 @@ class ClientSurveysController < ApplicationController
     end
 
     def client_survey_params
-      params.require(:client_survey).permit(:text, :name, :email, :survey_id)
+      params.require(:client_survey).permit(:text, :name, :email, :survey_id, :score)
     end
 end

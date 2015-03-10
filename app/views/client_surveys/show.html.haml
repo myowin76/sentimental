@@ -2,6 +2,9 @@
 %p#notice= notice
 
 %p
+  %b Score:
+  = @client_survey.score
+%p
   %b Text:
   = @client_survey.text
 %p
@@ -13,6 +16,7 @@
 %p
   %b Survey:
   = @client_survey.survey_id
+
 
 = link_to 'Edit', edit_client_survey_path(@client_survey)
 \|
