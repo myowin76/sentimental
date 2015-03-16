@@ -216,6 +216,33 @@ div {
 }
 
 
+//slider overwrites
+main{
+	.irs-slider{
+		box-shadow: none;
+		border-radius: 0;
+		border: none;
+		background: #e95127;
+	}
+	.irs-line{
+		border-radius: 0;
+		border: none;
+		background: #f18a18;
+		height: 7px;
+	}
+	.irs-bar, .irs-bar-edge{
+		border: none;
+		background: #f18a18;
+		border-radius: 0;
+		height: 7px;
+	}
+	.irs-grid-text{
+		color: #e95127;
+		font-size: 14px;
+	}
+
+}
+
 /* Simple Form */
 // .simple_form{
 // 	&.new_user{
