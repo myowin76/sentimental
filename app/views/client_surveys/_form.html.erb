@@ -7,16 +7,16 @@
       </li>
     </ul>
     <div class="tab-content">
-      <div class="question wrap">
-        <div class="col-xs-4">
+      <div class="question" style="background-color: #df0917;height: 60px;">
+        <div class="col-xs-4" style="background-color: #b81817;height: 60px;padding: 1.5em 0.7em;">
           Your comments
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-8" style="padding: 1.5em 0.7em;height: 60px;">
           <p><%= @survey.question %></p>
         </div>
       </div>
       <div class="form-grp">
-        <%= f.input :text, label: false, :input_html => {:class => 'form-control'} %>
+        <%= f.input :text, label: false, :input_html => {:class => 'form-control'}, placeholder: 'Enter your comment here...' %>
       </div>
     </div>
   </div>
@@ -26,12 +26,12 @@
   <%#= f.input :score, as: :radio_buttons, :collection => [ ['1', 1], ['2', 2],['3', 3], ['4', 4],['5', 5], ['6', 6],['7', 7], ['8', 8],['9', 9], ['10', 10], ] %>
   <%#= f.input :name %>
   <%#= f.input :email %>
-  <div class="rate wrap" style="margin-bottom: 2em;">
-    <div class="col-xs-4">
+  <div class="rate" style="margin-bottom: 2em; background-color: #f18800;height: 60px;">
+    <div class="col-xs-4" style="padding:1.5em 0.7em;height:60px;">
       rate us
     </div>
-    <div class="col-xs-8">
-      <p>On a scale of 0-10, where 0 is awful and 10 is brilliant, how would you rate Microsoft right now?</p>
+    <div class="col-xs-8" style="background-color:#ffea00;padding:0.2em;height:60px;">
+      <p>On a scale of 0-10, where 0 is awful and 10 is brilliant, how would you rate Microsoft right now?</p>
     </div>
   </div>
 
