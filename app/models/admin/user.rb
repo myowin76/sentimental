@@ -5,4 +5,6 @@ class Admin::User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :surveys
+  belongs_to :licence
+  # attr_accessor :signin
 end

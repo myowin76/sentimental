@@ -1,0 +1,82 @@
+<%= simple_form_for(@client_survey) do |f| %>
+  <%= f.error_notification %>
+  <div class="tabs">
+    <ul>
+      <li class="active">
+        <a href="#">Sentiment</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="question wrap">
+        <div class="col-xs-4">
+          Your comments
+        </div>
+        <div class="col-xs-8">
+          <p><%= @survey.question %></p>
+        </div>
+      </div>
+      <div class="form-grp">
+        <%= f.input :text, label: false, :input_html => {:class => 'form-control'} %>
+      </div>
+    </div>
+  </div>
+  <%= f.input :survey_id, :as => :hidden, :input_html => { :value => @survey.id } %>
+  
+
+  <%#= f.input :score, as: :radio_buttons, :collection => [ ['1', 1], ['2', 2],['3', 3], ['4', 4],['5', 5], ['6', 6],['7', 7], ['8', 8],['9', 9], ['10', 10], ] %>
+  <%#= f.input :name %>
+  <%#= f.input :email %>
+  <div class="rate wrap">
+    <div class="col-xs-4">
+      rate us
+    </div>
+    <div class="col-xs-8">
+      <p>On a scale of 0-10, where 0 is awful and 10 is brilliant, how would you rate Microsoft right now?</p>
+    </div>
+  </div>
+
+  <div id="slider1"></div>
+  <div class="wrap">
+    <%= f.submit 'Tell us', class: 'btn btn-default' %>
+  </div>
+
+<% end %>
+
+<% content_for :scripts do %>
+
+<script type="text/javascript">
+$("#slider1").ionRangeSlider({
+    type: "single",
+    min: 0,
+    max: 10,
+    step: 1,
+    from: 5,
+    // values: ["1", "2", "3"],
+    grid: true,
+    grid_num: 10
+});
+
+// Save slider instance to var
+var slider = $("#range_50a").data("ionRangeSlider");
+
+// 	$("#slider1").ionRangeSlider({
+//     type: "single",
+//     min: 0,
+//     max: 100,
+//     from: 50,
+//     keyboard: true,
+//     onStart: function (data) {
+//         console.log("onStart");
+//     },
+//     onChange: function (data) {
+//         console.log("onChange");
+//     },
+//     onFinish: function (data) {
+//         console.log("onFinish");
+//     },
+//     onUpdate: function (data) {
+//         console.log("onUpdate");
+//     }
+// });
+</script>
+<% end %>

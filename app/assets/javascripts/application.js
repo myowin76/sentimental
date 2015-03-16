@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
+
 $('.btn.generate').on('click', function(){
 	alert('remote generate url');
 });

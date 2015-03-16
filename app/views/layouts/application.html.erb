@@ -6,15 +6,34 @@
  
   <%= stylesheet_link_tag 'application' %>
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='http://ionden.com/a/plugins/ion.rangeSlider/static/css/ion.rangeSlider.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://ionden.com/a/plugins/ion.rangeSlider/static/css/skin3.css">
 
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="container-fluid">
-		<%= yield %>
+		<header>
+			<img src="/assets/ms-cpe.jpg" alt="" />
+			<h1>Microsoft CPE Sentiment App</h1>
+			<h3>Let us know what you think</h3>
+		</header>
+
+		<main>
+			<%= yield %>
+		</main>
+		
+		<footer>
+			<a href="#">
+				<img src="/assets/microsoft.png" alt="Microsoft" />
+			</a>
+		</footer>
 	</div>
 
+
 	<%= javascript_include_tag 'application' %>
+	<script type="text/javascript" src="http://ionden.com/a/plugins/ion.rangeSlider/static/js/ion-rangeSlider/ion.rangeSlider.js"></script>
+
 	<%= yield :scripts %>
 </body>
 </html>

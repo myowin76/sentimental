@@ -4,20 +4,11 @@
 %p
   %b Score:
   = @client_survey.score
-%p
-  %b Text:
-  = @client_survey.text
-%p
-  %b Name:
-  = @client_survey.name
-%p
-  %b Email:
-  = @client_survey.email
-%p
-  %b Survey:
-  = @client_survey.survey_id
+  =# @client_survey.text
+  =# @client_survey.name
+  =# @client_survey.email
+  =# @client_survey.survey_id
 
 
-= link_to 'Edit', edit_client_survey_path(@client_survey)
-\|
-= link_to 'Back', client_surveys_path
+=# link_to 'Edit', edit_client_survey_path(@client_survey)
+=# link_to 'Back', client_surveys_path

@@ -4,9 +4,15 @@ Rails.application.routes.draw do
 
   
 
+  get 'registrations/update'
+
+  namespace :admin do
+    resources :licences
+  end
+
   get 'main/saveSurvey'
 
-  devise_for :users, class_name: "Admin::User"
+  devise_for :users, class_name: "Admin::User", :controllers => { registrations: 'registrations'}
   get 'admin', :controller => 'admin', :action => 'dashboard'
   
   namespace :admin do

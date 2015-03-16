@@ -6,6 +6,7 @@
       %th Name
       %th Url token
       %th Question
+      %th Date
       %th
       %th
       %th
@@ -16,6 +17,7 @@
         %td= admin_survey.name
         %td= link_to admin_survey.url_token, "/feedback/#{admin_survey.url_token}",  :target => "_blank"
         %td= admin_survey.question
+        %td= admin_survey.created_at.strftime('%d %h %Y')
         %td= link_to 'Show', admin_survey
         %td= link_to 'Edit', edit_admin_survey_path(admin_survey)
         %td= link_to 'Destroy', admin_survey, :method => :delete, :data => { :confirm => 'Are you sure?' }

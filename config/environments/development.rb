@@ -44,6 +44,6 @@ Rails.application.configure do
   :user_name => 'katysepecial9@gmail.com',
   :password => 'mandalay7',
   :authentication => 'plain',
-  :enable_starttls_auto => true
+  # :enable_starttls_auto => true
   }
 end
