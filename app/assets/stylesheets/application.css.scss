@@ -1,0 +1,244 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require ion-slider
+ * require_tree .
+ *= require_self
+ */
+
+@import "partials/base";
+//custom
+
+ body {
+  background-color: $yellow;
+  color: #333;
+  font-family: 'Lato', arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+header{
+
+}
+
+footer{
+	text-align: right;
+	padding: 18px 0;
+}
+.wrap{
+	overflow: hidden;
+	background-color: $orange;
+	padding: 18px 0;
+	text-align: center;
+}
+.form-control{
+	border: 1px solid transparent;
+	border-radius: 0px;
+	box-shadow: none;
+}
+
+.tabs{
+	
+	> ul {
+		padding: 0px; margin: 0px;
+		overflow: hidden;
+		
+		li{
+			float: left;
+			list-style: none;
+			background-color: $orange;
+			border-top-right-radius: 4px;
+			border-top-left-radius: 4px;
+
+			&.active{
+				background-color: $red;	
+			}
+
+			a{
+				display: block;
+				padding: 9px 12px;
+				color: $white;
+				font-size: 1em;
+				text-decoration: none;
+				border-top-right-radius: 4px;
+				border-top-left-radius: 4px;
+
+				&:hover{
+					background-color: $orange;
+				}
+			}
+		}
+	}
+
+	textarea{
+		min-height: 150px;
+	}
+} // tabs
+
+.btn{
+	border: none;
+	border-radius: 0;
+	padding: 10px 30px;
+
+	&.btn-default{
+		background-color: $yellow;
+		color: $white;
+		font-size: 16px;
+	}
+}
+
+h1, h2, h3{
+	color: $font-red;
+}
+
+p, ol, ul, td {
+  font-family: 'Lato', arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+//loading
+.loading-spinner{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 31px;
+	height: 7px;
+	text-align: center;
+
+	i{
+		vertical-align: top;
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: #7D7D8E;
+		-webkit-animation: pulse 1s infinite ease-in-out;
+		-moz-animation: pulse 1s infinite ease-in-out;
+		animation: pulse 1s infinite ease-in-out;
+		-webkit-animation-fill-mode: both;
+		-moz-animation-fill-mode: both;
+		animation-fill-mode: both;
+		&.one{
+			float: left;
+			-webkit-animation-delay: -0.32s;
+			-moz-animation-delay: -0.32s;
+			animation-delay: -0.32s;
+		}
+		&.two{
+			-webkit-animation-delay: -0.16s;
+			-moz-animation-delay: -0.16s;
+			animation-delay: -0.16s;
+		}
+		&.three{
+			float: right;
+		}
+	}
+}
+
+
+//slider overwrites
+main{
+	.irs-slider{
+		box-shadow: none;
+		border-radius: 0;
+		border: none;
+		background: #e95127;
+		width: 30px; height: 30px;
+		top: 14px;
+	}
+	.irs-line{
+		border-radius: 0;
+		border: none;
+		background: #f18a18;
+		height: 7px;
+	}
+	.irs-bar, .irs-bar-edge{
+		border: none;
+		background: #f18a18;
+		border-radius: 0;
+		height: 7px;
+	}
+	.irs-grid-text{
+		color: #e95127;
+		font-size: 14px;
+	}
+    .irs-grid-pol{
+        background: none;
+    }
+
+}
+
+/* Simple Form */
+// .simple_form{
+// 	&.new_user{
+// 		max-width: 330px;
+// 	  padding: 15px;
+// 	  margin: 0 auto;
+// 	}
+// }

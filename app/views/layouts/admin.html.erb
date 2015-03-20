@@ -4,7 +4,7 @@
   <title>Sentimental</title>
   
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'admin' %>
   <%= csrf_meta_tags %>
 
 </head>
@@ -29,12 +29,7 @@
 			      
 			      
 			      <ul class="nav navbar-nav navbar-right">
-			        <li>
-			        	<%= link_to "Home", root_path %>
-			        </li>
-			        <li>
-			        	<%= link_to "Surveys", admin_surveys_path %>
-			        </li>
+			        
 			        <% if user_signed_in? %>
 				        <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email  %><span class="caret"></span></a>
@@ -42,8 +37,12 @@
 				            <li>
 				            	<%= link_to "My Account", edit_user_registration_path %>
 				            </li>
-				            <li><a href="#">Another action</a></li>
-				            <li><a href="#">Something else here</a></li>
+				            <li>
+				            	<%= link_to "Surveys", admin_surveys_path %>
+				            </li>
+				            <li>
+				            	<%= link_to "Reports", admin_report_path %>
+				            </li>
 				            <li class="divider"></li>
 				            <li>
 				            	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

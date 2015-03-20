@@ -23,57 +23,11 @@
     </tbody>
 </table>
 
-<h1>Charts</h1>
-<div id="chart1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
-<%= link_to 'Edit', edit_admin_survey_path(@admin_survey) %>
-<br>
-<%= link_to 'Back', admin_surveys_path %>
+<%#= link_to 'Edit', edit_admin_survey_path(@admin_survey) %>
+<%#= link_to 'Back', admin_surveys_path %>
 
 
 <% content_for :scripts do %>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript">
-$(function () {
-    $('#chart1').highcharts({
-        title: {
-            text: 'Sentiment Pulse Chart',
-            x: -20 //center
-        },
-        subtitle: {
-            text: '<%= @admin_survey.name %>',
-            x: -20
-        },
-        xAxis: {
-            categories: ['2015', '2014']
-        },
-        yAxis: {
-            title: {
-                text: 'Scores'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-            valueSuffix: ''
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [
-            {
-                name: 'London',
-                data: [<%= @admin_survey.client_surveys.map(&:score).join(",") %>]
-            },
-            
-        ]
-    });
-});
-</script>
+
 <% end %>

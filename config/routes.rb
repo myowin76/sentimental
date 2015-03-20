@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
   
- 
-
-  
-
   get 'registrations/update'
 
-  namespace :admin do
-    resources :licences
-  end
-
+  
   get 'main/saveSurvey'
 
   devise_for :users, class_name: "Admin::User", :controllers => { registrations: 'registrations'}
@@ -18,10 +11,12 @@ Rails.application.routes.draw do
   namespace :admin do
 
     get 'dashboard', as: 'dashboard'
+    get 'report', as: 'report'
     # get 'admin/dashboard'
     
     resources :countries
     resources :surveys
+    resources :licences
   end
 
   resources :client_surveys
