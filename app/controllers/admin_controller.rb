@@ -7,6 +7,13 @@ class AdminController < ApplicationController
   end
 
   def report
+  	
 		@surveys = current_user.surveys  	
+		# @surveys = current_user.surveys.search(params[:search])
+		if params[:survey]
+			@survey = @surveys.find(params[:survey][:survey_id])
+			# @survey = @surveys.where('text LIKE%', params[:survey])
+		end
+		
   end
 end

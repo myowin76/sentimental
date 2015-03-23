@@ -20,9 +20,9 @@
 //custom
 
  body {
-  background-color: $yellow;
+  background-color: $blue;
   color: #333;
-  font-family: 'Lato', arial, helvetica, sans-serif;
+  // font-family: 'Lato', arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -98,7 +98,7 @@ footer{
 }
 
 h1, h2, h3{
-	color: $font-red;
+	color: $white;
 }
 
 p, ol, ul, td {
@@ -228,17 +228,11 @@ main{
 		color: #e95127;
 		font-size: 14px;
 	}
-    .irs-grid-pol{
-        background: none;
-    }
+  .irs-grid-pol{
+      background: none;
+  }
+  .irs-single{
+  	top: -10px;
+  }
 
 }
-
-/* Simple Form */
-// .simple_form{
-// 	&.new_user{
-// 		max-width: 330px;
-// 	  padding: 15px;
-// 	  margin: 0 auto;
-// 	}
-// }

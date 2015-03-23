@@ -6,15 +6,11 @@
  <!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script-->
  <meta content='width=device-width, initial-scale=1.0 maximum-scale=1 user-scalable=no' name='viewport' /> 
   <%= stylesheet_link_tag 'application' %>
-  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
- 
-
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="container-fluid">
 		<header>
-			<img src="/assets/ms-cpe.jpg" alt="" />
 			<h1 style="magin-bottom: 0px;">Sentiment App</h1>
 			<h3 style="margin-top: 0px;margin-bottom: 2em;">Let us know what you think</h3>
 		</header>
@@ -23,11 +19,9 @@
 			<%= yield %>
 		</main>
 		
-		<footer>
-			<a href="#">
-				<img src="/assets/microsoft.png" alt="Microsoft" />
-			</a>
-		</footer>
+		<!-- <footer>
+
+		</footer> -->
 	</div>
 
 

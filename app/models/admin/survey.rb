@@ -5,6 +5,14 @@ class Admin::Survey < ActiveRecord::Base
 	accepts_nested_attributes_for :client_surveys	#, :allow_destroy => true
 
 
+	def self.search(search)
+		if search
+			where("text LIKE", "%#{search}")
+		else
+			find(:all)
+		end	
+	end
+		
 
 	private
 	
