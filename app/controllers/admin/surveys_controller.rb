@@ -28,6 +28,7 @@ class Admin::SurveysController < AdminController
     
     respond_to do |format|
       if @admin_survey.save
+        @admin_survey.update_attribute(:company, @current_user.company)
         format.html { redirect_to admin_surveys_path, notice: 'Survey was successfully created.' }
       else
         format.html { render action: "new", notice: 'Error, Please try again.' }

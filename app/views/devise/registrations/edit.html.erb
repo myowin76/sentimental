@@ -19,6 +19,12 @@
   <div class="form-group">
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: 'form-control'} %>
   </div>
+  <div class="form-group">
+    <%= f.input :name, placeholder: 'Name', required: false, autofocus: true, input_html: { class: 'form-control input-lg' }, label: false %>
+  </div>
+  <div class="form-group">
+    <%= f.input :company, placeholder: 'Company', required: false, autofocus: true, input_html: { class: 'form-control input-lg' }, label: false %>
+  </div>
   <%= f.button :submit, "Update", class: 'btn btn-default' %>
 <% end %>
 

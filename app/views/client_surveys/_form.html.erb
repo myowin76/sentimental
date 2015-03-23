@@ -1,10 +1,10 @@
 <p>
-  <% unless @survey.question.nil? %>
-    <%= @survey.question %>
-  <% else %>
-    Tell us, in your own words, your feelings about Clientx. <br>
-    This is include your opinions about products, services, your experience of interactions with us or anything else you want to say about Clientx.
-  <% end %>
+  <%# unless @survey.question.nil? %>
+    <%#= @survey.question %>
+  <%# else %>
+    Tell us, in your own words, your feelings about <%= @survey.company %> <br>
+    This is include your opinions about products, services, your experience of interactions with us or anything else you want to say about <%= @survey.company %>.
+  <%# end %>
 </p>
 <%= simple_form_for(@client_survey) do |f| %>
   <%= f.error_notification %>

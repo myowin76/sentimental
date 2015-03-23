@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
 	def create
-		byebug
+		# byebug
 		build_resource(sign_up_params)
 
     resource.save
@@ -28,11 +28,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
   def sign_up_params
-  	params.require(:user).permit(:email, :password, :password_confirmation, :licence_id)
+  	params.require(:user).permit(:email, :password, :password_confirmation, :licence_id, :name, :company)
   end
 
   def account_update_params
   	params.require(:user).permit(:email, :password, :password_confirmation, :current_password,
-  		:licence)
+  		:licence_id, :name, :company)
   end
 end

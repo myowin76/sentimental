@@ -4,14 +4,14 @@
   <div class="form-group">
     <%= f.input :name, input_html: {class: 'form-control'}, label: 'Survey Name:' %>
   </div>
-  <div class="form-group">
-    <%= f.input :url_token, input_html: {class: 'form-control url_token'}, label: 'Survey URL:' %>
-  </div>
+  <!-- <div class="form-group">
+    <%#= f.input :question, input_html: {class: 'form-control'}, label: 'Survey Question:' %>
+  </div> -->
   <div class="form-group">
     <%= link_to 'Generate', '#', class: 'btn btn-default generate' %>
   </div>
   <div class="form-group">
-    <%= f.input :question, input_html: {class: 'form-control'} %>
+    <%= f.input :url_token, input_html: {class: 'form-control url_token'}, label: 'Survey URL:' %>
   </div>
 
   <div class="form-group">

@@ -13,6 +13,12 @@
         <%= f.input :password_confirmation, placeholder: 'Password confirmation', required: false, input_html: { class: 'form-control input-lg' }, label: false %>
       </div>
       <div class="form-group">
+        <%= f.input :name, placeholder: 'Name', required: false, autofocus: true, input_html: { class: 'form-control input-lg' }, label: false %>
+      </div>
+      <div class="form-group">
+        <%= f.input :company, placeholder: 'Company', required: false, autofocus: true, input_html: { class: 'form-control input-lg' }, label: false %>
+      </div>
+      <div class="form-group">
         <%= f.select :licence_id, options_from_collection_for_select(Admin::Licence.all, 'id', 'name'), {}, {class: 'form-control input-lg'}  %>
       </div>
       

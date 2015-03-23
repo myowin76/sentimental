@@ -3,6 +3,7 @@ class Admin::Survey < ActiveRecord::Base
 	has_many :client_surveys
 
 	validates :name, presence: true
+	# validates :question, presence: true
 	validates :url_token, presence: true, uniqueness: true
 
 	def self.search(search)
