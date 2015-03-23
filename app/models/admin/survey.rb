@@ -2,8 +2,8 @@ class Admin::Survey < ActiveRecord::Base
 	belongs_to :user
 	has_many :client_surveys
 
-	accepts_nested_attributes_for :client_surveys	#, :allow_destroy => true
-
+	validates :name, presence: true
+	validates :url_token, presence: true, uniqueness: true
 
 	def self.search(search)
 		if search

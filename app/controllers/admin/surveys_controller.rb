@@ -25,8 +25,14 @@ class Admin::SurveysController < AdminController
   def create
     
     @admin_survey = current_user.surveys.new(admin_survey_params)
-    @admin_survey.save
-    respond_with(@admin_survey)
+    
+    respond_to do |format|
+      if @admin_survey.save
+        format.html { redirect_to admin_surveys_path, notice: 'Survey was successfully created.' }
+      else
+        format.html { render action: "new", notice: 'Error, Please try again.' }
+      end
+    end 
   end
 
   def update
