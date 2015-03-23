@@ -5,10 +5,10 @@
 <div class="filter row">
 	<%= form_tag admin_report_path, :method => 'get' do %>
   <div class="col-sm-2">
-    <%= text_field_tag :search, params[:text], placeholder: 'Date From', class: 'form-control' %>
+    <%= text_field_tag :search, params[:text], id: 'date_from', placeholder: 'Date From', class: 'form-control datepicker-input' %>
   </div>
   <div class="col-sm-2">
-    <%= text_field_tag :search, params[:text], placeholder: 'Date To', class: 'form-control' %>
+    <%= text_field_tag :search, params[:text], id: 'date_to', placeholder: 'Date To', class: 'form-control datepicker-input' %>
   </div>
   <div class="col-sm-2">
   	<%= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {}, {class: 'form-control '}) %>
@@ -25,17 +25,35 @@
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <% content_for :scripts do %>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script type="text/javascript">
 $(function () {
+    $( "#date_from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      onClose: function( selectedDate ) {
+        $( "#date_to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#date_to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      onClose: function( selectedDate ) {
+        $( "#date_from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+
+
     $('#container').highcharts({
         title: {
-            text: 'Monthly Average Temperature',
+            text: '',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: '',
             x: -20
         },
         xAxis: {
@@ -44,7 +62,7 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: ''
             },
             plotLines: [{
                 value: 0,

@@ -18,7 +18,14 @@
 @import "partials/base";
 @import "partials/coco-bootstrap-theme";
 
+
+.filter{
+	margin: 2em 0;
+}
  // overwrites
+ header .navbar-default .navbar-toggle, header .navbar-default .navbar-toggle:hover, header .navbar-default .navbar-toggle:focus{
+ 	margin-top: 7px;
+ }
 header .navbar-default ul.navbar-nav li a{
   color: $blue;
 }
