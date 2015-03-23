@@ -25,6 +25,7 @@
     </div>
   </div>
   <%= f.input :survey_id, :as => :hidden, :input_html => { :value => @survey.id } %>
+  <%= f.input :score, :as => :hidden  %>
   
 
   <%#= f.input :score, as: :radio_buttons, :collection => [ ['1', 1], ['2', 2],['3', 3], ['4', 4],['5', 5], ['6', 6],['7', 7], ['8', 8],['9', 9], ['10', 10], ] %>
@@ -47,44 +48,25 @@
 <% end %>
 
 <% content_for :scripts do %>
+ 
+  <script type="text/javascript">
 
-    
-    
-    <script type="text/javascript">
-
-    //Slider
-    $("#slider1").ionRangeSlider({
-        type: "single",
-        min: 0,
-        max: 10,
-        step: 1,
-        from: 5,
-        // values: ["1", "2", "3"],
-        grid: true,
-        grid_num: 10
-    });
-
-    // Save slider instance to var
-    var slider = $("#range_50a").data("ionRangeSlider");
-
-    // 	$("#slider1").ionRangeSlider({
-    //     type: "single",
-    //     min: 0,
-    //     max: 100,
-    //     from: 50,
-    //     keyboard: true,
-    //     onStart: function (data) {
-    //         console.log("onStart");
-    //     },
-    //     onChange: function (data) {
-    //         console.log("onChange");
-    //     },
-    //     onFinish: function (data) {
-    //         console.log("onFinish");
-    //     },
-    //     onUpdate: function (data) {
-    //         console.log("onUpdate");
-    //     }
-    // });
+  //Slider
+  $("#slider1").ionRangeSlider({
+      type: "single",
+      min: 0,
+      max: 10,
+      step: 1,
+      from: 5,
+      grid: true,
+      grid_num: 10,
+      onStart: function (data) {
+        console.log("onStart");
+        $('#client_survey_score').val(data['from']);
+      },
+      onChange: function (data) {
+        $('#client_survey_score').val(data['from']);
+      }
+  });
     </script>
 <% end %>
