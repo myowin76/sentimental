@@ -48,39 +48,43 @@
 
 <% content_for :scripts do %>
 
-<script type="text/javascript">
-$("#slider1").ionRangeSlider({
-    type: "single",
-    min: 0,
-    max: 10,
-    step: 1,
-    from: 5,
-    // values: ["1", "2", "3"],
-    grid: true,
-    grid_num: 10
-});
+    
+    
+    <script type="text/javascript">
 
-// Save slider instance to var
-var slider = $("#range_50a").data("ionRangeSlider");
+    //Slider
+    $("#slider1").ionRangeSlider({
+        type: "single",
+        min: 0,
+        max: 10,
+        step: 1,
+        from: 5,
+        // values: ["1", "2", "3"],
+        grid: true,
+        grid_num: 10
+    });
 
-// 	$("#slider1").ionRangeSlider({
-//     type: "single",
-//     min: 0,
-//     max: 100,
-//     from: 50,
-//     keyboard: true,
-//     onStart: function (data) {
-//         console.log("onStart");
-//     },
-//     onChange: function (data) {
-//         console.log("onChange");
-//     },
-//     onFinish: function (data) {
-//         console.log("onFinish");
-//     },
-//     onUpdate: function (data) {
-//         console.log("onUpdate");
-//     }
-// });
-</script>
+    // Save slider instance to var
+    var slider = $("#range_50a").data("ionRangeSlider");
+
+    // 	$("#slider1").ionRangeSlider({
+    //     type: "single",
+    //     min: 0,
+    //     max: 100,
+    //     from: 50,
+    //     keyboard: true,
+    //     onStart: function (data) {
+    //         console.log("onStart");
+    //     },
+    //     onChange: function (data) {
+    //         console.log("onChange");
+    //     },
+    //     onFinish: function (data) {
+    //         console.log("onFinish");
+    //     },
+    //     onUpdate: function (data) {
+    //         console.log("onUpdate");
+    //     }
+    // });
+    </script>
 <% end %>

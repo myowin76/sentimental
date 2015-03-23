@@ -19,6 +19,6 @@ class Admin::Survey < ActiveRecord::Base
 	def generate_url(column)
 	  begin
 	    self[column] = SecureRandom.urlsafe_base64
-	  end while Admin::User.exists?(column => self[column])
+	  end while Admin::Survey.exists?(column => self[column])
 	end
 end

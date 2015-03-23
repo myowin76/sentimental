@@ -42,6 +42,20 @@ header .navbar-default .navbar-brand{
 header .navbar-default ul.navbar-nav li a:hover, header .navbar-default ul.navbar-nav li a:focus{
   color: #336799;  
 }
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+	color: #555555;
+  background-color: #eee;
+}
+.navbar-nav > li > .dropdown-menu{
+	background: #7A868F;
+  color: #fff;
+}
+.navbar-nav > li.topbar-profile > .dropdown-menu > li > a{
+	color: #eee !important;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Open Sans";
+}
 
 // date picker
 /*! jQuery UI - v1.11.4 - 2015-03-11
