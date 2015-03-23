@@ -1,20 +1,24 @@
+<p>
+  Tell us, in your own words, your feelings about Clientx. <br>
+  This is include your opinions about products, services, your experience of interactions with us or anything else you want to say about Clientx.
+</p>
 <%= simple_form_for(@client_survey) do |f| %>
   <%= f.error_notification %>
   <div class="tabs">
-    <ul>
+    <!-- <ul>
       <li class="active">
         <a href="#">Sentiment</a>
       </li>
-    </ul>
-    <div class="tab-content">
-      <div class="question" style="background-color: #df0917;height: 60px;">
+    </ul> -->
+    <div class="tab-content" style="margin-bottom: 2em;">
+      <!-- <div class="question" style="background-color: #df0917;height: 60px;">
         <div class="col-xs-4" style="background-color: #b81817;height: 60px;padding: 1.5em 0.7em;">
           Your comments
         </div>
         <div class="col-xs-8" style="padding: 1.5em 0.7em;height: 60px;">
-          <p><%= @survey.question %></p>
+          <p><%#= @survey.question %></p>
         </div>
-      </div>
+      </div> -->
       <div class="form-grp">
         <%= f.input :text, label: false, :input_html => {:class => 'form-control'}, placeholder: 'Enter your comment here...' %>
       </div>
@@ -26,14 +30,14 @@
   <%#= f.input :score, as: :radio_buttons, :collection => [ ['1', 1], ['2', 2],['3', 3], ['4', 4],['5', 5], ['6', 6],['7', 7], ['8', 8],['9', 9], ['10', 10], ] %>
   <%#= f.input :name %>
   <%#= f.input :email %>
-  <div class="rate" style="margin-bottom: 2em; background-color: #f18800;height: 60px;">
+  <!-- <div class="rate" style="margin-bottom: 2em; background-color: #f18800;height: 60px;">
     <div class="col-xs-4" style="padding:1.5em 0.7em;height:60px;">
       rate us
     </div>
     <div class="col-xs-8" style="background-color:#ffea00;padding:0.2em;height:60px;">
       <p>On a scale of 0-10, where 0 is awful and 10 is brilliant, how would you rate Microsoft right now?</p>
     </div>
-  </div>
+  </div> -->
 
   <div id="slider1"></div>
   <div class="wrap" style="margin-top: 2em;">

@@ -37,7 +37,7 @@ footer{
 }
 .wrap{
 	overflow: hidden;
-	background-color: $orange;
+	// background-color: $orange;
 	padding: 18px 0;
 	text-align: center;
 }
@@ -91,8 +91,8 @@ footer{
 	padding: 10px 30px;
 
 	&.btn-default{
-		background-color: $yellow;
-		color: $white;
+		// background-color: $yellow;
+		// color: $white;
 		font-size: 16px;
 	}
 }
@@ -215,12 +215,12 @@ main{
 	.irs-line{
 		border-radius: 0;
 		border: none;
-		background: #f18a18;
+		background: #ffffff;
 		height: 7px;
 	}
 	.irs-bar, .irs-bar-edge{
 		border: none;
-		background: #f18a18;
+		background: #ffffff;
 		border-radius: 0;
 		height: 7px;
 	}
