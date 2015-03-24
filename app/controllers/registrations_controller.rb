@@ -23,8 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
     end	
 	end
 
-  def update
-  end
+  
 
   private
   def sign_up_params

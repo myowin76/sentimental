@@ -1,10 +1,25 @@
-<h1>
-	<%= @admin_survey.name %>
-</h1>
+<div class="col-sm-9 col-sm-offset-2" style="margin-top: 2em;">
+    <h2><%#= @admin_survey.name %></h2>
+    <%#= link_to request.host_with_port() + "/feedback/" + @admin_survey.url_token, "http://" + request.host_with_port() + "/feedback/" + @admin_survey.url_token %><br>
+    <div class="form-group" style="font-size: 30px;">
+    <label>Survey Name:</label>
+      <h2><%= @admin_survey.name %></h2>
+    </div>
 
-<!-- <p><%#= @admin_survey.url_token %></p> -->
+    <div class="form-group" style="font-size: 30px;">
+        <label>Survey URL:</label>
+      <%= link_to "#{request.host_with_port}/feedback/#{@admin_survey.url_token}", "http://#{request.host_with_port}/feedback/#{@admin_survey.url_token}", target: '_blank' %>
+        <br>
+      <%#= f.input :url_token, input_html: {class: 'form-control url_token', style: 'border: none; font-size: 30px;padding: 0;'}, label: 'Survey URL:' %>
+      <span style="color: red; font-size: 12px;">Share this url in any printed or digital communications.</span> <br>
+    </div>
+</div>
+<div class="col-sm-6 col-sm-offset-3" style="margin-top: 2em;">
+<%#= link_to 'Edit', edit_admin_survey_path(@admin_survey) %>
+<%#= link_to 'My Surveys', admin_surveys_path %>
 
-<table class="table">
+</div>
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Client Feedback</th>
@@ -22,12 +37,6 @@
     <% end %>
     </tbody>
 </table>
+ -->
 
-
-<%#= link_to 'Edit', edit_admin_survey_path(@admin_survey) %>
 <%#= link_to 'Back', admin_surveys_path %>
-
-
-<% content_for :scripts do %>
-
-<% end %>

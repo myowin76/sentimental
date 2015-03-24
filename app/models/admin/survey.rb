@@ -4,7 +4,9 @@ class Admin::Survey < ActiveRecord::Base
 
 	validates :name, presence: true
 	# validates :question, presence: true
-	validates :url_token, presence: true, uniqueness: true
+	# validates :url_token, uniqueness: true
+
+	# before_create { generate_token(:url_token) }
 
 	def self.search(search)
 		if search
@@ -15,11 +17,11 @@ class Admin::Survey < ActiveRecord::Base
 	end
 		
 
-	private
+	# private
 	
-	def generate_url(column)
+	def self.generate_token
 	  begin
-	    self[column] = SecureRandom.urlsafe_base64
-	  end while Admin::Survey.exists?(column => self[column])
+	    self[:url_token] = SecureRandom.urlsafe_base64
+	  end while Admin::Survey.exists?(column => self[:url_token])
 	end
 end

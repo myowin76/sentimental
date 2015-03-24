@@ -20,16 +20,22 @@ class Admin::SurveysController < AdminController
   end
 
   def edit
+    
   end
 
   def create
+
+    if params[:admin_survey][:url_token].nil?
+      params[:admin_survey][:url_token] = SecureRandom.urlsafe_base64
+    end
     
     @admin_survey = current_user.surveys.new(admin_survey_params)
     
     respond_to do |format|
       if @admin_survey.save
         @admin_survey.update_attribute(:company, @current_user.company)
-        format.html { redirect_to admin_surveys_path, notice: 'Survey was successfully created.' }
+        # format.html { redirect_to admin_surveys_path, notice: 'Survey was successfully created.' }
+        format.html { redirect_to edit_admin_survey_path(@admin_survey) }
       else
         format.html { render action: "new", notice: 'Error, Please try again.' }
       end
@@ -37,6 +43,10 @@ class Admin::SurveysController < AdminController
   end
 
   def update
+    if params[:admin_survey][:url_token].empty?
+      params[:admin_survey][:url_token] = SecureRandom.urlsafe_base64
+    end
+
     @admin_survey.update(admin_survey_params)
     respond_with(@admin_survey)
   end

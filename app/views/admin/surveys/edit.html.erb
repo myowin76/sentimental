@@ -1,0 +1,25 @@
+
+
+<%#= render 'form' %>
+<div class="col-sm-9 col-sm-offset-2" style="margin-top: 2em;">
+  <%= simple_form_for(@admin_survey) do |f| %>
+    <%= f.error_notification %>
+<br><br><br>
+    <div class="form-group" style="font-size: 30px;">
+      <%#= f.input :name, input_html: {class: 'form-control'}, label: 'Survey Name:' %>
+      <label>Survey Name:</label>
+      <h2><%= @admin_survey.name %></h2>
+    </div>
+
+    <div class="form-group" style="font-size: 30px;">
+    	<label>Survey URL:</label>
+      <%= link_to "#{request.host_with_port}/feedback/#{@admin_survey.url_token}", "http://#{request.host_with_port}/feedback/#{@admin_survey.url_token}", target: '_blank' %>
+    	<br>
+      <%#= f.input :url_token, input_html: {class: 'form-control url_token', style: 'border: none; font-size: 30px;padding: 0;'}, label: 'Survey URL:' %>
+      <span style="color: red; font-size: 12px;">Share this url in any printed or digital communications.</span> <br>
+    </div>
+    
+      <%= render 'partials/socials'%>
+
+  <% end %>
+</div>
