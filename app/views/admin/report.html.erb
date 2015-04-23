@@ -11,7 +11,7 @@
     <%= text_field_tag :search, params[:text], id: 'date_to', placeholder: 'Date To', class: 'form-control datepicker-input' %>
   </div>
   <div class="col-sm-3">
-  	<%= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {}, {class: 'form-control '}) %>
+  	<%= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {:prompt => 'All Surveys'}, {class: 'form-control'}) %>
   </div>
   <div class="col-sm-3">
     <%= text_field_tag :search, params[:text], placeholder: 'Target word', class: 'form-control' %>

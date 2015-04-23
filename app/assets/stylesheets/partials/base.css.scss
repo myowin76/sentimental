@@ -1,14 +1,9 @@
-
-
 // colors
 $white                 : #ffffff;
 $yellow                : #fab813;
 $orange                : #F18800;
 $red                   : #B81817;
 $font-red              : #d95013;
-
-
-//april six colors
 $blue										: #00A7C4;
 
 // socials
@@ -25,6 +20,23 @@ $blue										: #00A7C4;
     }  
   }
 }
+
+// custom{
+  @media (max-width: 460px) {
+    .login-submit{
+      .btn{
+        &.login{
+          width: 100% !important;
+          margin-bottom: 1em;
+        }
+      }
+      >span{
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+
 
 .error{
   color: red;
