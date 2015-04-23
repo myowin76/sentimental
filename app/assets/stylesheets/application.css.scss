@@ -27,6 +27,10 @@
   line-height: 18px;
 }
 
+.contact-form{
+	display: none;
+}
+
 header{
 
 }
@@ -45,6 +49,10 @@ footer{
 	// border: 1px solid transparent;
 	border-radius: 0px;
 	box-shadow: none;
+}
+
+.form-group{
+	overflow: hidden;
 }
 
 .contact-panel{
