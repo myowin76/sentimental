@@ -35,6 +35,19 @@ $blue										: #00A7C4;
         text-align: center;
       }
     }
+
+    .register-submit{
+      .btn{
+        &.register{
+          width: 100% !important;
+          margin-bottom: 1em;
+        }
+      }
+      >span{
+        display: block;
+        text-align: center;
+      }
+    }
   }
 
 

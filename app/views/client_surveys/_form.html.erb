@@ -51,6 +51,20 @@
       </div>
 
       <div class="form-group">
+        <label class="col-sm-3 control-label">Phone:</label>
+        <div class="col-sm-9">
+          <%= f.input :phone, placeholder: 'Phone', required: false, input_html: { class: 'form-control input-lg' }, label: false %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Company:</label>
+        <div class="col-sm-9">
+          <%= f.input :company, placeholder: 'Company', required: false, input_html: { class: 'form-control input-lg' }, label: false %>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label class="col-sm-3 control-label">&nbsp;</label>
         <div class="col-sm-9">
           <span style="color:#b42626;font-size:13px;">
@@ -62,7 +76,7 @@
   </div>
 
   <div class="wrap" style="margin-top: 2em;">
-    <%= f.submit 'Submit', class: 'btn btn-default' %>
+    <%= f.submit 'Submit', class: 'btn btn-lg btn-default' %>
   </div>
 
 <% end %>
@@ -73,8 +87,11 @@
   $('#pcm').on('click', function(){
     if($("#pcm").is(':checked'))
       $('.contact-form').show();
-    else
+    else{
+      $('#client_survey_name').val("");
+      $('#client_survey_email').val("");
       $('.contact-form').hide();
+    }
   });
  </script>
  
