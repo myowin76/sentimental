@@ -34,4 +34,9 @@ class RegistrationsController < Devise::RegistrationsController
   	params.require(:user).permit(:email, :password, :password_confirmation, :current_password,
   		:licence_id, :name, :company)
   end
+  def set_minimum_password_length
+    if devise_mapping.validatable?
+      @minimum_password_length = resource_class.password_length.min
+    end
+  end
 end

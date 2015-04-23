@@ -22,7 +22,7 @@
  body {
   background-color: $white;
   color: #333;
-  font-family: 'Lato', arial, helvetica, sans-serif;
+  font-family: 'Raleway', arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -92,12 +92,9 @@ footer{
 
 .btn{
 	border: none;
-	border-radius: 0;
 	padding: 10px 30px;
 
 	&.btn-default{
-		// background-color: $yellow;
-		// color: $white;
 		font-size: 16px;
 	}
 }
@@ -107,8 +104,8 @@ h1, h2, h3{
 }
 
 p, ol, ul, td {
-  font-family: 'Lato', arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-family: 'Raleway', arial, helvetica, sans-serif;
+  font-size: 14px;
   line-height: 18px;
 }
 
@@ -140,9 +137,14 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
+  padding: 1px;
   background-color: red;
-  display: table;
+  // display: table;
+
+  .error{
+  	color: $white;
+  	padding-left: 6px;
+  }
 }
 
 #error_explanation {
@@ -220,12 +222,12 @@ main{
 	.irs-line{
 		border-radius: 0;
 		border: none;
-		background: #ffffff;
+		background: #e95127;
 		height: 7px;
 	}
 	.irs-bar, .irs-bar-edge{
 		border: none;
-		background: #ffffff;
+		background: #e95127;
 		border-radius: 0;
 		height: 7px;
 	}

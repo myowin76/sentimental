@@ -1,267 +1,270 @@
 <header>
-    <h1>Client Sentiment Pulse Report</h1>
-    <p>Pick the date range you want to examine the sentiment pulse for and then optionally filter the data on campaign name, target word and use the sentiment value slider to set the maximum sentiment value.</p>
+  <h1>Client Sentiment Pulse Report</h1>
+  <p>Pick the date range you want to examine the sentiment pulse for and then optionally filter the data on campaign name, target word and use the sentiment value slider to set the maximum sentiment value.</p>
 </header>
+
 <div class="filter row">
 	<%= form_tag admin_report_path, :method => 'get' do %>
-  <div class="col-sm-2">
-    <%= text_field_tag :search, params[:text], id: 'date_from', placeholder: 'Date From', class: 'form-control datepicker-input' %>
-  </div>
-  <div class="col-sm-2">
-    <%= text_field_tag :search, params[:text], id: 'date_to', placeholder: 'Date To', class: 'form-control datepicker-input' %>
-  </div>
-  <div class="col-sm-3">
-  	<%= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {:prompt => 'All Surveys'}, {class: 'form-control'}) %>
-  </div>
-  <div class="col-sm-3">
-    <%= text_field_tag :search, params[:text], placeholder: 'Target word', class: 'form-control' %>
-  </div>
-  <div class="col-sm-2">
-    <%= submit_tag "Update", :name => nil, class: 'btn btn-default' %>
-  </div>
-<% end %>
+    <div class="col-sm-2">
+      <%= text_field_tag :search, params[:text], id: 'date_from', placeholder: 'Date From', class: 'form-control datepicker-input' %>
+    </div>
+    <div class="col-sm-2">
+      <%= text_field_tag :search, params[:text], id: 'date_to', placeholder: 'Date To', class: 'form-control datepicker-input' %>
+    </div>
+    <div class="col-sm-3">
+    	<%= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {:prompt => 'All Surveys'}, {class: 'form-control'}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= text_field_tag :search, params[:text], placeholder: 'Target word', class: 'form-control' %>
+    </div>
+    <div class="col-sm-2">
+      <%= submit_tag "Update", :name => nil, class: 'btn btn-default' %>
+    </div>
+  <% end %>
 	
 </div>
+
 <div id="chartdiv" style="min-width: 310px; height: 500px; margin: 0 auto"></div>
 
 <%= render 'partials/socials'%>
 <br><br><br>
+
 <% content_for :scripts do %>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+  <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+                     
+  <script type="text/javascript">
+  
+  $(function () {
+      $( "#date_from" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        onClose: function( selectedDate ) {
+          $( "#date_to" ).datepicker( "option", "minDate", selectedDate );
+        }
+      });
+      $( "#date_to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        onClose: function( selectedDate ) {
+          $( "#date_from" ).datepicker( "option", "maxDate", selectedDate );
+        }
+      });
 
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/none.js"></script>
-                   
-<script type="text/javascript">
-$(function () {
-    $( "#date_from" ).datepicker({
-      defaultDate: "+1w",
-      changeMonth: true,
-      onClose: function( selectedDate ) {
-        $( "#date_to" ).datepicker( "option", "minDate", selectedDate );
+
+    var chart = AmCharts.makeChart("chartdiv", {
+      "type": "serial",
+      "theme": "none",
+      "marginLeft": 20,
+      "pathToImages": "http://www.amcharts.com/lib/3/images/",
+      "dataProvider":
+      [{
+          "year": "1950",
+          "value": 3
+      }, {
+          "year": "1951",
+          "value": 6
+      }, {
+          "year": "1952",
+          "value": 7
+      }, {
+          "year": "1953",
+          "value": 2
+      }, {
+          "year": "1954",
+          "value": 5
+      }, {
+          "year": "1955",
+          "value": 8
+      }, {
+          "year": "1956",
+          "value": 4
+      }, {
+          "year": "1957",
+          "value": 7
+      }, {
+          "year": "1958",
+          "value": 10
+      }, {
+          "year": "1959",
+          "value": 7
+      }, {
+          "year": "1960",
+          "value": 2
+      }, {
+          "year": "1961",
+          "value": 2
+      }, {
+          "year": "1962",
+          "value": 2
+      }, {
+          "year": "1963",
+          "value": 0
+      }, {
+          "year": "1964",
+          "value": 9
+      }, {
+          "year": "1965",
+          "value": 1
+      }, {
+          "year": "1966",
+          "value": 4
+      }, {
+          "year": "1967",
+          "value": 5
+      }, {
+          "year": "1968",
+          "value": 6
+      }, {
+          "year": "1969",
+          "value": 1
+      }, {
+          "year": "1970",
+          "value": 6
+      }, {
+          "year": "1971",
+          "value": 9
+      }, {
+          "year": "1972",
+          "value": 5
+      }, {
+          "year": "1973",
+          "value": 7
+      }, {
+          "year": "1974",
+          "value": 10
+      }, {
+          "year": "1975",
+          "value": 7
+      }, {
+          "year": "1976",
+          "value": 5
+      }, {
+          "year": "1977",
+          "value": 9
+      }, {
+          "year": "1978",
+          "value": 6
+      }, {
+          "year": "1979",
+          "value": 8
+      }, {
+          "year": "1980",
+          "value": 7
+      }, {
+          "year": "1981",
+          "value": 3
+      }, {
+          "year": "1982",
+          "value": 1
+      }, {
+          "year": "1983",
+          "value": 7
+      }, {
+          "year": "1984",
+          "value": 2
+      }, {
+          "year": "1985",
+          "value": 7
+      }, {
+          "year": "1986",
+          "value": 10
+      }, {
+          "year": "1987",
+          "value": 9
+      }, {
+          "year": "1988",
+          "value": 5
+      }, {
+          "year": "1989",
+          "value": 4
+      }, {
+          "year": "1990",
+          "value": 5
+      }, {
+          "year": "1991",
+          "value": 10
+      }, {
+          "year": "1992",
+          "value": 5
+      }, {
+          "year": "1993",
+          "value": 8
+      }, {
+          "year": "1994",
+          "value": 2
+      }, {
+          "year": "1995",
+          "value": 9
+      }, {
+          "year": "1996",
+          "value": 1
+      }, {
+          "year": "1997",
+          "value": 3
+      }, {
+          "year": "1998",
+          "value": 8
+      }, {
+          "year": "1999",
+          "value": 8
+      }, {
+          "year": "2000",
+          "value": 7
+      }, {
+          "year": "2001",
+          "value": 1
+      }, {
+          "year": "2002",
+          "value": 2
+      }, {
+          "year": "2003",
+          "value": 7
+      }, {
+          "year": "2004",
+          "value": 5
+      }, {
+          "year": "2005",
+          "value": 10
+      }],
+      "valueAxes": [{
+          "min": 0,
+          "axisAlpha": 0,
+          "inside": true,
+          "position": "left",
+          "ignoreAxisWidth": true,
+
+      }],
+      "graphs": [{
+          "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+          "bullet": "round",
+          "bulletSize": 6,
+          "lineColor": "#637bb6",
+          "negativeBase" : 5,
+          "lineThickness": 1,
+          "negativeLineColor": "#d1655d",
+          "type": "smoothedLine",
+          "valueField": "value"
+      }],
+      "chartScrollbar": {},
+      "chartCursor": {
+          "categoryBalloonDateFormat": "YYYY",
+          "cursorAlpha": 0,
+          "cursorPosition": "mouse"
+      },
+      "dataDateFormat": "YYYY",
+      "categoryField": "year",
+      "categoryAxis": {
+          "minPeriod": "YYYY",
+          "parseDates": true,
+          "minorGridAlpha": 0.1,
+          "minorGridEnabled": true
       }
     });
-    $( "#date_to" ).datepicker({
-      defaultDate: "+1w",
-      changeMonth: true,
-      onClose: function( selectedDate ) {
-        $( "#date_from" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-
-
-  var chart = AmCharts.makeChart("chartdiv", {
-    "type": "serial",
-    "theme": "none",
-    "marginLeft": 20,
-    "pathToImages": "http://www.amcharts.com/lib/3/images/",
-    "dataProvider":
-    [{
-        "year": "1950",
-        "value": 3
-    }, {
-        "year": "1951",
-        "value": 6
-    }, {
-        "year": "1952",
-        "value": 7
-    }, {
-        "year": "1953",
-        "value": 2
-    }, {
-        "year": "1954",
-        "value": 5
-    }, {
-        "year": "1955",
-        "value": 8
-    }, {
-        "year": "1956",
-        "value": 4
-    }, {
-        "year": "1957",
-        "value": 7
-    }, {
-        "year": "1958",
-        "value": 10
-    }, {
-        "year": "1959",
-        "value": 7
-    }, {
-        "year": "1960",
-        "value": 2
-    }, {
-        "year": "1961",
-        "value": 2
-    }, {
-        "year": "1962",
-        "value": 2
-    }, {
-        "year": "1963",
-        "value": 0
-    }, {
-        "year": "1964",
-        "value": 9
-    }, {
-        "year": "1965",
-        "value": 1
-    }, {
-        "year": "1966",
-        "value": 4
-    }, {
-        "year": "1967",
-        "value": 5
-    }, {
-        "year": "1968",
-        "value": 6
-    }, {
-        "year": "1969",
-        "value": 1
-    }, {
-        "year": "1970",
-        "value": 6
-    }, {
-        "year": "1971",
-        "value": 9
-    }, {
-        "year": "1972",
-        "value": 5
-    }, {
-        "year": "1973",
-        "value": 7
-    }, {
-        "year": "1974",
-        "value": 10
-    }, {
-        "year": "1975",
-        "value": 7
-    }, {
-        "year": "1976",
-        "value": 5
-    }, {
-        "year": "1977",
-        "value": 9
-    }, {
-        "year": "1978",
-        "value": 6
-    }, {
-        "year": "1979",
-        "value": 8
-    }, {
-        "year": "1980",
-        "value": 7
-    }, {
-        "year": "1981",
-        "value": 3
-    }, {
-        "year": "1982",
-        "value": 1
-    }, {
-        "year": "1983",
-        "value": 7
-    }, {
-        "year": "1984",
-        "value": 2
-    }, {
-        "year": "1985",
-        "value": 7
-    }, {
-        "year": "1986",
-        "value": 10
-    }, {
-        "year": "1987",
-        "value": 9
-    }, {
-        "year": "1988",
-        "value": 5
-    }, {
-        "year": "1989",
-        "value": 4
-    }, {
-        "year": "1990",
-        "value": 5
-    }, {
-        "year": "1991",
-        "value": 10
-    }, {
-        "year": "1992",
-        "value": 5
-    }, {
-        "year": "1993",
-        "value": 8
-    }, {
-        "year": "1994",
-        "value": 2
-    }, {
-        "year": "1995",
-        "value": 9
-    }, {
-        "year": "1996",
-        "value": 1
-    }, {
-        "year": "1997",
-        "value": 3
-    }, {
-        "year": "1998",
-        "value": 8
-    }, {
-        "year": "1999",
-        "value": 8
-    }, {
-        "year": "2000",
-        "value": 7
-    }, {
-        "year": "2001",
-        "value": 1
-    }, {
-        "year": "2002",
-        "value": 2
-    }, {
-        "year": "2003",
-        "value": 7
-    }, {
-        "year": "2004",
-        "value": 5
-    }, {
-        "year": "2005",
-        "value": 10
-    }],
-    "valueAxes": [{
-        "min": 0,
-        "axisAlpha": 0,
-        "inside": true,
-        "position": "left",
-        "ignoreAxisWidth": true,
-
-    }],
-    "graphs": [{
-        "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-        "bullet": "round",
-        "bulletSize": 6,
-        "lineColor": "#637bb6",
-        "negativeBase" : 5,
-        "lineThickness": 1,
-        "negativeLineColor": "#d1655d",
-        "type": "smoothedLine",
-        "valueField": "value"
-    }],
-    "chartScrollbar": {},
-    "chartCursor": {
-        "categoryBalloonDateFormat": "YYYY",
-        "cursorAlpha": 0,
-        "cursorPosition": "mouse"
-    },
-    "dataDateFormat": "YYYY",
-    "categoryField": "year",
-    "categoryAxis": {
-        "minPeriod": "YYYY",
-        "parseDates": true,
-        "minorGridAlpha": 0.1,
-        "minorGridEnabled": true
-    }
-});
-});
-</script>	
-
+  });
+  </script>	
 
 <% end %>
