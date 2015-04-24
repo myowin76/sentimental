@@ -15,24 +15,26 @@ class AdminController < ApplicationController
 		# @surveys = current_user.surveys.search(params[:search])
 		
 		
-		if params[:survey] && params[:survey][:survey_id].present?
-			@survey = @surveys.find(params[:survey][:survey_id])
-
-			
+		if params[:survey]
+			@survey = @surveys.find(params[:survey])
+		else
+			@survey = @surveys.find_by_id(1)
 		end
 
 		if params[:search].present?
-			@client_surveys = @survey.client_surveys.textSearch(params[:search])
+			@client_surveys = @survey.client_surveys.text_search(params[:search])
+		else
+			@client_surveys = @survey.client_surveys
 		end
 	
 			date_from = params[:date_from].present? ? DateTime.parse(params[:date_from]) : DateTime.parse('01/01/2000')
 	    date_to = params[:date_to].present? ? DateTime.parse(params[:date_to]) : DateTime.now
 	          
-		@client_surveys = @survey.client_surveys.find_between(date_from, date_to)
+		@client_surveys = @client_surveys.find_between(date_from, date_to)
 
 
 
-			# byebug
+		# byebug
 			
 			# respond_to do |format|
 	  #     format.js {

@@ -13,16 +13,21 @@
       <%= text_field_tag :date_to, params[:date_to], id: 'date_to', placeholder: 'Date To', class: 'form-control datepicker-input' %>
     </div>
     <div class="col-sm-3">
-    	<%#= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {:prompt => 'All Surveys'}, {class: 'form-control'}) %>
-      <% if params[:survey] && params[:survey][:survey_id].present?   %>
-        <%= collection_select(:survey, :survey_id, @surveys, :id, :name, 
-          {:selected => params[:survey][:survey_id], :include_blank => 'All Surveys'}, {class: 'form-control'}) %>
+    	
+      <% if params[:survey].present?   %>
+        <%= select_tag "survey", options_from_collection_for_select(@surveys, "id", "name", params[:survey]), class: 'form-control' %>
+        <%#= collection_select(:survey, :survey_id, @surveys, :id, :name, 
+          {:selected => params[:survey_id], :include_blank => 'All Surveys'}, {class: 'form-control'}) %>
+
+        <%#= select_tag "credit_card", options_for_select([ "VISA", "MasterCard" ], "MasterCard") %>
       <% else %>
-        <%= collection_select(:survey, :survey_id, @surveys, :id, :name, { prompt: 'All Surveys'}, {class: 'form-control'})  %>
+        <%= select_tag "survey", options_from_collection_for_select(@surveys, "id", "name"), class: 'form-control' %>
+        <%#= collection_select(:survey, :survey_id, @surveys, :id, :name, { prompt: 'All Surveys'}, {class: 'form-control'})  %>
+        <%#= select("survey", "survey_id", @surveys.collect {|p| [ p.name, p.id ] }, {:prompt => 'All Surveys'}, {class: 'form-control'}) %>
       <% end %>  
     </div>
     <div class="col-sm-3">
-      <%= text_field_tag :search, params[:text], placeholder: 'Target word', class: 'form-control' %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Target word', class: 'form-control' %>
     </div>
     <div class="col-sm-2">
       <%= submit_tag "Update", :name => nil, class: 'btn btn-default' %>

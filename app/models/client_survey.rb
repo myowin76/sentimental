@@ -10,6 +10,10 @@ class ClientSurvey < ActiveRecord::Base
   end
 
   def self.text_search(text)
-  	where('text LIKE%', text)
+  	if text.present?
+	  	where('text LIKE ?', "%#{text}%")
+	  else
+	  	scoped
+	  end
   end
 end
