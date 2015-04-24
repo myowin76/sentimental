@@ -13,12 +13,13 @@ class AdminController < ApplicationController
 		@surveys = current_user.surveys
 		
 		# @surveys = current_user.surveys.search(params[:search])
-		
+	
+	unless @surveys.nil?	
 		
 		if params[:survey]
 			@survey = @surveys.find(params[:survey])
 		else
-			@survey = @surveys.find_by_id(1)
+			@survey = @surveys.last
 		end
 
 		if params[:search].present?
@@ -32,7 +33,7 @@ class AdminController < ApplicationController
 	          
 		@client_surveys = @client_surveys.find_between(date_from, date_to)
 
-
+	end
 
 		# byebug
 			
