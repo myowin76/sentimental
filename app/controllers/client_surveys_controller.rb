@@ -46,6 +46,6 @@ class ClientSurveysController < ApplicationController
     end
 
     def client_survey_params
-      params.require(:client_survey).permit(:text, :name, :email, :survey_id, :score)
+      params.require(:client_survey).permit(:text, :name, :email, :company, :phone, :survey_id, :score)
     end
 end

@@ -22,10 +22,11 @@ class AdminController < ApplicationController
 			@survey = @surveys.last
 		end
 
+		@client_surveys = @survey.client_surveys
+
+
 		if params[:search].present?
-			@client_surveys = @survey.client_surveys.text_search(params[:search])
-		else
-			@client_surveys = @survey.client_surveys
+			@client_surveys = @client_surveys.text_search(params[:search])
 		end
 	
 			date_from = params[:date_from].present? ? DateTime.parse(params[:date_from]) : DateTime.parse('01/01/2000')
