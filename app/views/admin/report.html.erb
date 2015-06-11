@@ -53,9 +53,7 @@
 <% content_for :scripts do %>
   
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-  <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
-  <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
                      
   <script type="text/javascript">
   
@@ -78,147 +76,74 @@
       });
 
 
-    // var chart = AmCharts.makeChart("chartdiv", {
-    //   "type": "serial",
-    //   "theme": "none",
-    //   "marginLeft": 20,
-    //   "pathToImages": "http://www.amcharts.com/lib/3/images/",
-    //   "dataProvider": [
-    //     <% @client_surveys.order(:created_at).each do |cs| %>
-    //     {
-    //       "year" : <%= cs.created_at.strftime('%Y') %>,
-    //       "text" : "<%= cs.text %>",
-    //       "value" : <%= cs.score %>
-    //     },
-    //     <% end %>
-    //   ],
-    //   // [{
-    //   //     "year": "1950",
-    //   //     "value": 3
-    //   // }],
-    //   "valueAxes": [{
-    //       "min": 0,
-    //       "axisAlpha": 0,
-    //       "inside": true,
-    //       "position": "left",
-    //       "ignoreAxisWidth": true,
+     }); 
 
-    //   }],
-    //   "graphs": [{
-    //       "balloonText": "<b><span style='font-size:14px;'>[[text]]<br>[[category]]<br>Score:[[value]]</span></b>",
-    //       "bullet": "round",
-    //       "bulletSize": 6,
-    //       "lineColor": "#637bb6",
-    //       "negativeBase" : 5,
-    //       "lineThickness": 1,
-    //       "negativeLineColor": "#d1655d",
-    //       "type": "smoothedLine",
-    //       "valueField": "value"
-    //   }],
-    //   "chartScrollbar": {},
-    //   "chartCursor": {
-    //       "categoryBalloonDateFormat": "YYYY",
-    //       "cursorAlpha": 0,
-    //       "cursorPosition": "mouse"
-    //   },
-    //   "dataDateFormat": "YYYY",
-    //   "categoryField": "year",
-    //   "categoryAxis": {
-    //       "minPeriod": "YYYY",
-    //       "parseDates": true,
-    //       "minorGridAlpha": 0.1,
-    //       "minorGridEnabled": true
-    //   }
-    // });
-var chartData = generatechartData();
+    var n = 20, // number of layers
+        m = 200, // number of samples per layer
+        stack = d3.layout.stack().offset("wiggle"),
+        layers0 = stack(d3.range(n).map(function() { return bumpLayer(m); })),
+        layers1 = stack(d3.range(n).map(function() { return bumpLayer(m); }));
 
-function generatechartData() {
-    var chartData = [];
-    var firstDate = new Date();
-    firstDate.setDate(firstDate.getDate() - 150);
+    var width = 1170,
+        height = 500;
 
-    for (var i = 0; i < 150; i++) {
-        // we create date objects here. In your data, you can have date strings
-        // and then set format of your dates using chart.dataDateFormat property,
-        // however when possible, use date objects, as this will speed up chart rendering.
-        var newDate = new Date(firstDate);
-        newDate.setDate(newDate.getDate() + i);
+    var x = d3.scale.linear()
+        .domain([0, m - 1])
+        .range([0, width]);
 
-        var visits = Math.round(Math.random() * 10);
+    var y = d3.scale.linear()
+        .domain([0, d3.max(layers0.concat(layers1), function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); })])
+        .range([height, 0]);
 
-        chartData.push({
-            date: newDate,
-            visits: visits
-        });
+    var color = d3.scale.linear()
+        .range(["#aadfff", "#ff0011", "red"]);
+
+    var area = d3.svg.area()
+        .x(function(d) { return x(d.x); })
+        .y0(function(d) { return y(d.y0); })
+        .y1(function(d) { return y(d.y0 + d.y); });
+
+    var svg = d3.select("#chartdiv").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    svg.selectAll("path")
+        .data(layers0)
+      .enter().append("path")
+        .attr("d", area)
+        .style("fill", function() { return color(Math.random()); });
+
+    function transition() {
+      d3.selectAll("path")
+          .data(function() {
+            var d = layers1;
+            layers1 = layers0;
+            return layers0 = d;
+          })
+        .transition()
+          .duration(2500)
+          .attr("d", area);
     }
-        // <%# @client_surveys.order(:created_at).each do |cs| %>
-        //   var newDate = new Date(firstDate);
-        //   newDate.setDate(<%#= cs.created_at. %>.getDate() + i);
 
-        //     chartData.push({
-        //       "date" : newDate,
-        //       "visits" : <%#= cs.score %>
-        //     });
-        // <%# end %>
-    return chartData;
-}
+    // Inspired by Lee Byron's test data generator.
+    function bumpLayer(n) {
 
+      function bump(a) {
+        var x = 1 / (.1 + Math.random()),
+            y = 2 * Math.random() - .5,
+            z = 10 / (.1 + Math.random());
+        for (var i = 0; i < n; i++) {
+          var w = (i / n - y) * z;
+          a[i] += x * Math.exp(-w * w);
+        }
+      }
 
-var chart = AmCharts.makeChart("chartdiv", {
-    "theme": "light",
-    "type": "serial",
-    "marginRight": 80,
-    "autoMarginOffset": 20,    
-    "marginTop":20,
-    "path": "http://www.amcharts.com/lib/3/",
-    "dataProvider": chartData,
-    "valueAxes": [{
-        "id": "v1",
-        "axisAlpha": 0.1
-    }],
-    "graphs": [{
-        "useNegativeColorIfDown": true,
-        "balloonText": "[[category]]<br><b>value: [[value]]</b>",
-        "bullet": "round",
-        "bulletBorderAlpha": 1,
-        "bulletBorderColor": "#FFFFFF",
-        "hideBulletsCount": 50,
-        "lineThickness": 1,
-        "lineColor": "#fdd400",
-        "negativeLineColor": "#67b7dc",
-        "valueField": "visits"
-    }],
-    "chartScrollbar": {
-        "scrollbarHeight": 5,
-        "backgroundAlpha": 0.1,
-        "backgroundColor": "#868686",
-        "selectedBackgroundColor": "#67b7dc",
-        "selectedBackgroundAlpha": 1
-    },
-    "chartCursor": {
-        "valueLineEnabled": false,
-        "valueLineBalloonEnabled": true
-    },
-    "categoryField": "date",
-    "categoryAxis": {
-        "parseDates": true,
-        "axisAlpha": 0,
-        "minHorizontalGap": 60
-    },
-    "export": {
-        "enabled": true
+      var a = [], i;
+      for (i = 0; i < n; ++i) a[i] = 0;
+      for (i = 0; i < 5; ++i) bump(a);
+      return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
     }
-});
 
-chart.addListener("dataUpdated", zoomChart);
-//zoomChart();
-
-function zoomChart() {
-    if (chart.zoomToIndexes) {
-        chart.zoomToIndexes(130, chartData.length - 1);
-    }
-}
-  });
-  </script>	
+    </script>
 
 <% end %>
