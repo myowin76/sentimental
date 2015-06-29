@@ -27,13 +27,28 @@
   line-height: 18px;
 }
 
+.container-fluid{
+	max-width: 800px;
+}
+
 .contact-form{
 	display: none;
+	width: 80%;
+	margin: 0 auto;
+
+	label{
+		text-align: right;
+	}
+
+
+	@media screen and (max-width: 460px) {
+		width: 100%;
+    .btn.btn-lg {
+      width: 90%;
+    }
+	}
 }
 
-header{
-
-}
 
 footer{
 	text-align: right;
@@ -223,24 +238,24 @@ main{
 		box-shadow: none;
 		border-radius: 0;
 		border: none;
-		background: #e95127;
+		background: #b42626;
 		width: 30px; height: 30px;
 		top: 14px;
 	}
 	.irs-line{
 		border-radius: 0;
 		border: none;
-		background: #e95127;
+		background: #b42626;
 		height: 7px;
 	}
 	.irs-bar, .irs-bar-edge{
 		border: none;
-		background: #e95127;
+		background: #b42626;
 		border-radius: 0;
 		height: 7px;
 	}
 	.irs-grid-text{
-		color: #e95127;
+		color: #b42626;
 		font-size: 14px;
 	}
   .irs-grid-pol{
@@ -248,6 +263,7 @@ main{
   }
   .irs-single{
   	top: -10px;
+  	background-color: #b42626;
   }
 
 }
